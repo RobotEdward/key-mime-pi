@@ -108,7 +108,7 @@ function simulateKey(char) {
       shiftKey: char === char.toUpperCase(),
   });
 
-  document.dispatchEvent(keyEvent);
+  onKeyDown(keyEvent);
 }
 
 function handlePastedText(text) {
