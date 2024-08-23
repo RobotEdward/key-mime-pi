@@ -96,8 +96,35 @@ function onDisplayHistoryChanged(evt) {
   }
 }
 
+function simulateKey(char) {
+  const keyEvent = new KeyboardEvent('keydown', {
+      key: char,
+      code: `Key${char.toUpperCase()}`,
+      charCode: char.charCodeAt(0),
+      keyCode: char.charCodeAt(0),
+      which: char.charCodeAt(0),
+      bubbles: true,
+      cancelable: true,
+      shiftKey: char === char.toUpperCase(),
+  });
+
+  document.dispatchEvent(keyEvent);
+}
+
+function handlePastedText(text) {
+  for (let char of text) {
+      simulateKey(char);
+  }
+}
+
+
+
 document.querySelector('body').addEventListener("keydown", onKeyDown);
 document.getElementById('display-history-checkbox').addEventListener("change", onDisplayHistoryChanged);
+document.getElementById('pasteArea').addEventListener('paste', function(event) {
+  let pastedText = (event.clipboardData || window.clipboardData).getData('text');
+  handlePastedText(pastedText);
+});
 socket.on('connect', onSocketConnect);
 socket.on('disconnect', onSocketDisconnect);
 socket.on('keystroke-received', (data) => {
