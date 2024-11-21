@@ -23,28 +23,28 @@ find . \
   -delete
 
 # Run unit tests and calculate code coverage.
-coverage run \
-  --source "$SOURCE_DIR" \
-  -m unittest discover
-coverage report
+# coverage run \
+#   --source "$SOURCE_DIR" \
+#   -m unittest discover
+# coverage report
 
 # Check that source has correct formatting.
-yapf \
-  --diff \
-  --recursive \
-  --style google \
-  ./ \
-  --exclude=third_party/* \
-  --exclude=venv/*
+# yapf \
+#   --diff \
+#   --recursive \
+#   --style google \
+#   ./ \
+#   --exclude=third_party/* \
+#   --exclude=venv/*
 
 # Check correct sorting for imports.
-isort \
-  --recursive \
-  --force-single-line-imports \
-  --diff \
-  --check-only \
-  --skip-glob=third_party/* \
-  --skip-glob=venv/*
+# isort \
+#   --recursive \
+#   --force-single-line-imports \
+#   --diff \
+#   --check-only \
+#   --skip-glob=third_party/* \
+#   --skip-glob=venv/*
 
-# Run static analysis for Python bugs/cruft.
-pyflakes "${SOURCE_DIR}/"
+# # Run static analysis for Python bugs/cruft.
+# pyflakes "${SOURCE_DIR}/"

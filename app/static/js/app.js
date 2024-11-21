@@ -114,9 +114,11 @@ function simulateKey(char) {
 }
 
 function handlePastedText(text) {
-  for (let char of text) {
+  text.split('').forEach((char, index) => {
+    setTimeout(() => {
       simulateKey(char);
-  }
+    }, index * 200);
+  });
 }
 
 
