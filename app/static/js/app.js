@@ -107,7 +107,7 @@ function simulateKey(char) {
   socket.emit('keystroke', {
     metaKey: false,
     altKey: false,
-    shiftKey: char === char.toUpperCase(),
+    shiftKey: char === char.toLowerCase(),
     ctrlKey: false,
     key: char,
     keyCode: codeMap[char],
